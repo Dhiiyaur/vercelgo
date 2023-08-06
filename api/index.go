@@ -1,7 +1,8 @@
-package handler
+package api
 
 import (
 	"net/http"
+	"verceltest/service"
 
 	. "github.com/tbxark/g4vercel"
 )
@@ -9,10 +10,12 @@ import (
 func Handler(w http.ResponseWriter, r *http.Request) {
 
 	server := New()
-
 	server.GET("/", func(context *Context) {
+
+		// ctx := context.Background()
+		data, _ := service.MangatownIndex(context.Req.Context())
 		context.JSON(200, H{
-			"message": "text vercel",
+			"data": data,
 		})
 	})
 
