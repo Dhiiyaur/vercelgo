@@ -22,6 +22,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			"data": "go",
 		})
 	})
-
 	server.Handle(w, r)
 }
